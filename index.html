@@ -60,15 +60,15 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="https://www.shebuilds.tech/" target="_blank" class="nav-link">
+                        <a href="#" class="nav-link">
                             CONTACT US
                         </a>
                     </li>
                 </ul>
-               <!-- <form class="d-flex">
+                <form class="d-flex">
                     <input type="text" class="form-control me-2">
                     <button class="btn btn-outline-success">ENTER YOUR LAST MENSTRUAL DATE</button>
-                </form>-->
+                </form>
             </div>
        
     </nav>
@@ -79,9 +79,7 @@
 <div class="container">
     <div class="square">
       <div id="content">
-        <h2>When did you start your periods?</h2>
-        <p></p>
-        <p></p>
+        <h2>Did you Just start your periods.</h2>
         <p>
             <input type="button" 
                 value="Log your periods" 
@@ -91,10 +89,11 @@
         <div style="border:solid 1px #ddd; 
         padding:10px; 
         display:none;" 
-        id="cont"><form action="/action_page.php">
-            <input type="date" id="birthday" name="birthday">
-            <input id="submit_ans" type="submit">
-          </form></div>
+        id="cont"><input type=date id = "Day">
+
+        <!-- Choose a date and enter in input field -->
+        <button type="submit" onclick = "Calculator()"> date </button> <br><br>
+        <h3 style="color:32A80F" id="result" align="center"></h3> </div>
 
 
       </div>
@@ -120,7 +119,9 @@
             </div>
             <div class="col-md-2 col-lg col-xl-2 mx-auto mt-2">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning"></h5>
-             
+                <p>
+
+                </p>
             </div>
         </div>
     </div>
@@ -137,6 +138,29 @@
             var cont = document.getElementById('cont');
             cont.style.display = cont.style.display == 'none' ? 'block' : 'none';
         }
+        function Calculator() {
+console.log("In");
+    var userinput = document.getElementById("Day").value;
+    var dt = new Date(userinput);
+    if(userinput==null || userinput=='') {
+      document.getElementById("result").innerHTML = "**Choose a date please!";  
+      return false; 
+    } else {
+var res = new Date();
+
+res.setDate(dt.getDate()+28);
+var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+var res_date=res.getDate();
+var res_mon=res.getMonth();
+
+
+     document.getElementById("result").innerHTML =  
+             res_date + " " +monthNames[res_mon-1];
+    }
+}
     </script>
 </body>
 </html>
